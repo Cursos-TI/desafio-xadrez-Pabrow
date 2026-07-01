@@ -1,28 +1,10 @@
 #include <stdio.h>
 
-int main(){
-    //movimentação inicial de 3 peças. São elas: TORRE, BISPO E RAINHA.
-    //Torre cinco casas para a direita
-    //Bispo cinco casas na diagonal para cima e à direita
-    //Rainha oito casas para a esquerda
+void espacamento(){
+    printf("....\n");
+}
 
-    //lógica de movimentação das peças:
-    /* Vão haver duas varíaveis, uma para a movimentação horizontal e outra para a movimentação vertical.
-    Quando o valor da variavel for positivo ela vai para direita ou para cima, quando for negativo ela vai para a esquerda ou para baixo.
-    O usuario vai explicar qual casa ele quer e o sistema vai fazer a movimentação da peça. */
-
-    //declaração das variáveis: (vão ser sempre numeros inteiros)
-
-    int mov_torre_horizontal = 5,
-        mov_bispo_horizontal = 5,
-        mov_rainha_horizontal = -8,
-        mov_cavalo_horizontal = 1;
-
-    int mov_torre_vertical = 0,
-        mov_bispo_vertical = -5,
-        mov_rainha_vertical = 0,
-        mov_cavalo_vertical = -2;
-
+void movimentacao_torre(int mov_torre_horizontal, int mov_torre_vertical){
     //movimentação da torre com FOR
     printf("MOVIMENTAÇÃO DA TORRE:\n");
     if(mov_torre_horizontal>0 || mov_torre_vertical > 0){//Se o numero positivo ele faz esse for de baixo
@@ -42,10 +24,9 @@ int main(){
             }
         }
     }
+}
 
-    printf("....\n");
-
-    //movimentação bisco com WHILE
+void movimentacao_bispo(int mov_bispo_horizontal, int mov_bispo_vertical){
     printf("MOVIMENTAÇÃO DO BISPO:\n");
     int cima=0, direita=0, baixo=0, esquerda=0;
     do{
@@ -72,9 +53,10 @@ int main(){
         }
     }while((mov_bispo_horizontal != cima && mov_bispo_horizontal != baixo) && (mov_bispo_vertical != direita && mov_bispo_vertical != esquerda));//vai fazer o ciclo ENQUANTO as váriaveis não derem match.
     
-    printf("....\n");
 
-    //Movimentação da rainha com WHILE
+}
+
+void movimentacao_rainha(int mov_rainha_horizontal, int mov_rainha_vertical){
     printf("MOVIMENTAÇÃO DA RAINHA:\n");
     int rainha_cima = 0 , rainha_baixo = 0 , rainha_direita = 0 , rainha_esquerda = 0;    
     while(!(mov_rainha_horizontal == rainha_cima || mov_rainha_horizontal == rainha_baixo) && (mov_rainha_vertical == rainha_direita || mov_rainha_vertical == rainha_esquerda)){
@@ -93,10 +75,9 @@ int main(){
             rainha_esquerda--;
         }
     }
+}
 
-     printf("....\n");
-
-    //movimentação do cavalo.
+void movimentacao_cavalo(int mov_cavalo_horizontal, int mov_cavalo_vertical){
     printf("MOVIMENTAÇÃO DO CAVALO:\n");
     //movimentação horizontal
     if(mov_cavalo_horizontal>0){    
@@ -118,6 +99,43 @@ int main(){
             printf("BAIXO\n");
         }
     }
+    
+}
 
+int main(){
+    //lógica de movimentação das peças:
+    /* Vão haver duas varíaveis, uma para a movimentação horizontal e outra para a movimentação vertical.
+    Quando o valor da variavel for positivo ela vai para direita ou para cima, quando for negativo ela vai para a esquerda ou para baixo.
+    O usuario vai explicar qual casa ele quer e o sistema vai fazer a movimentação da peça. */
+
+    //declaração das variáveis: (vão ser sempre numeros inteiros)
+    int mov_torre_horizontal = 5,
+        mov_bispo_horizontal = 5,
+        mov_rainha_horizontal = -8,
+        mov_cavalo_horizontal = 1;
+
+    int mov_torre_vertical = 0,
+        mov_bispo_vertical = -5,
+        mov_rainha_vertical = 0,
+        mov_cavalo_vertical = -2;
+
+    //movimentação da torre com FOR e recursividade
+    movimentacao_torre(mov_torre_horizontal, mov_torre_vertical);
+
+    espacamento();
+
+    //movimentação bisco com WHILE
+    movimentacao_bispo(mov_bispo_horizontal, mov_bispo_vertical);
+
+    espacamento();
+    
+    //Movimentação da rainha com WHILE
+    movimentacao_rainha(mov_rainha_horizontal, mov_rainha_vertical);
+
+    espacamento();
+
+    //movimentação do cavalo.
+    movimentacao_cavalo(mov_cavalo_horizontal, mov_cavalo_vertical);
+    
 
 }
