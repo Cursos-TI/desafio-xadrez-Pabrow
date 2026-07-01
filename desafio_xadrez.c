@@ -15,11 +15,13 @@ int main(){
 
     int mov_torre_horizontal = 5,
         mov_bispo_horizontal = 5,
-        mov_rainha_horizontal = -8;
+        mov_rainha_horizontal = -8,
+        mov_cavalo_horizontal = 1;
 
     int mov_torre_vertical = 0,
         mov_bispo_vertical = -5,
-        mov_rainha_vertical = 0;
+        mov_rainha_vertical = 0,
+        mov_cavalo_vertical = -2;
 
     //movimentação da torre com FOR
     printf("MOVIMENTAÇÃO DA TORRE:\n");
@@ -51,17 +53,17 @@ int main(){
             if(mov_bispo_vertical>0){
                 printf("DIREITA\n");
                 printf("CIMA\n");
-                cima++, direita++;
+                baixo--, direita++;
             }else{
-                printf("ESQUERDA\n");
-                printf("CIMA\n");
+                printf("DIREITA\n");
+                printf("BAIXO\n");
                 cima++, esquerda--;
             }
         }else{
             if(mov_bispo_vertical>0){
-                printf("DIREITA\n");
-                printf("BAIXO\n");
-                baixo--, direita++;
+                printf("ESQUERDA\n");
+                printf("CIMA\n");
+                cima++, direita++;
             }else{
                 printf("ESQUERDA\n");
                 printf("BAIXO\n");
@@ -77,18 +79,45 @@ int main(){
     int rainha_cima = 0 , rainha_baixo = 0 , rainha_direita = 0 , rainha_esquerda = 0;    
     while(!(mov_rainha_horizontal == rainha_cima || mov_rainha_horizontal == rainha_baixo) && (mov_rainha_vertical == rainha_direita || mov_rainha_vertical == rainha_esquerda)){
         if(mov_rainha_horizontal > 0 ){
-            printf("CIMA\n");
+            printf("DIREITA\n");
             rainha_cima++;
         }else if(mov_rainha_horizontal < 0){
-            printf("BAIXO\n");
+            printf("ESQUERDA\n");
             rainha_baixo--;
         }         
         if(mov_rainha_vertical > 0){
-            printf("DIREITA\n");
+            printf("CIMA\n");
             rainha_direita++;
         }else if(mov_rainha_vertical < 0){
-            printf("ESQUERDA\n");
+            printf("BAIXO\n");
             rainha_esquerda--;
         }
     }
+
+     printf("....\n");
+
+    //movimentação do cavalo.
+    printf("MOVIMENTAÇÃO DO CAVALO:\n");
+    //movimentação horizontal
+    if(mov_cavalo_horizontal>0){    
+        for(int i = 0; i<mov_cavalo_horizontal; i++){
+            printf("DIREITA\n");
+        }
+    }else{
+        for(int i = 0; i>mov_cavalo_horizontal; i--){
+            printf("ESQUERDA\n");
+        }
+    }
+    //movimentação vertical
+    if(mov_cavalo_vertical>0){    
+        for(int i = 0; i<mov_cavalo_vertical; i++){
+            printf("CIMA\n");
+        }
+    }else{
+        for(int i = 0; i>mov_cavalo_vertical; i--){
+            printf("BAIXO\n");
+        }
+    }
+
+
 }
